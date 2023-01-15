@@ -10,12 +10,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Insira os nomes dos participantes: ");
         String str = sc.nextLine();
-        printCartela(createCartela(true, jogadores(str).length), jogadores(str));
-        String[][]  cartPlayers = createCartela(true, jogadores(str).length), cartMark = criaMarkCartela(cartPlayers[0].length);
-        cartMark = marcaCartela(cartPlayers,cartMark, "44");
-        for(int i = 0; i < jogadores(str).length; i++) {
-            for (int j = 0; j < cards; j++) {
-                System.out.printf("%s ",cartMark[i][j]);
+        String[] jogadores = jogadores(str);
+        int numberOfPlayers = jogadores.length;
+
+        printCartela(createCartela(true, numberOfPlayers), jogadores);
+        String[][] cartPlayers = createCartela(true, numberOfPlayers), cartMark = criaMarkCartela(cartPlayers[0].length);
+        cartMark = marcaCartela(cartPlayers, cartMark, "44");
+
+        for (int i = 0; i < numberOfPlayers; i++) {
+            for (int j = 0; j < numberOfPlayers; j++) {
+                System.out.printf("%s ", cartMark[i][j]);
             }
             System.out.printf("\n");
         }
@@ -95,18 +99,18 @@ public class Main {
     public static String[][] criaMarkCartela(int len) {
         String cartMark[][] = new String[cards][cards];
         for (int i = 0; i < len; i++) {
-            for (int j = 0; j < cards; j++ ){
+            for (int j = 0; j < cards; j++) {
                 cartMark[i][j] = "0";
             }
         }
         return cartMark;
     }
 
-    public static String[][] marcaCartela(String cartelas[][], String marcaCar[][], String num){
+    public static String[][] marcaCartela(String cartelas[][], String marcaCar[][], String num) {
         int len = cartelas[0].length;
-        for(int i = 0; i < len; i++){
-            for( int j = 0; j < cards; j++){
-                if(cartelas[i][j].equals(num)){
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < cards; j++) {
+                if (cartelas[i][j].equals(num)) {
                     marcaCar[i][j] = "1";
                 }
             }
