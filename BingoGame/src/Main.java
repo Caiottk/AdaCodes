@@ -7,6 +7,7 @@ public class Main {
     public static final int cards = 5;
 
     public static void main(String[] args) {
+        // Inicio do Scanner
         Scanner sc = new Scanner(System.in);
         System.out.println("Insira os nomes dos participantes: ");
         String str = sc.nextLine();
